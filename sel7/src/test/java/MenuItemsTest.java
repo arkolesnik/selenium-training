@@ -37,32 +37,11 @@ public class MenuItemsTest {
         for (int i = 1; i <= outerMenuItems.size(); i++) {
             driver.findElement(By.cssSelector(String.format(outerMenuItemLocator, i))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
-
-            try
-            {
-                Thread.sleep(1000);
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
-
             List<WebElement> innerMenuItems = driver.findElements(By.cssSelector("li[id^='doc']"));
             for (int j = 2; j <= innerMenuItems.size(); j++) {
                 driver.findElement(By.cssSelector(String.format(innerMenuItemLocator, j))).click();
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
-
-                try
-                {
-                    Thread.sleep(1000);
-                }
-                catch(InterruptedException ex)
-                {
-                    Thread.currentThread().interrupt();
-                }
-
             }
-
         }
     }
 
