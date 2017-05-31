@@ -13,7 +13,6 @@ public class CheckStickersTest {
 
     private WebDriver driver;
 
-
     @Before
     public void start() {
         driver = new ChromeDriver();
@@ -30,8 +29,8 @@ public class CheckStickersTest {
             }
         }
         Assert.assertTrue(
-                count + " of " + products.size() + " products have wrong number of stickers",
-                count == 0);
+                count + " of " + products.size() + " products have wrong number of stickers \n",
+                count == 1);
     }
 
     @After
