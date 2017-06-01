@@ -30,7 +30,7 @@ public class CheckStickersTest {
         }
         Assert.assertTrue(
                 count + " of " + products.size() + " products have wrong number of stickers \n",
-                count == 1);
+                count == 0);
     }
 
     @After
