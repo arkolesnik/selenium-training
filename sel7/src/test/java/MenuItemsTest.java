@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,7 +29,7 @@ public class MenuItemsTest {
         driver.findElement(By.name("login")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("box-apps-menu")));
 
-        List<WebElement> outerMenuItems = driver.findElements(By.cssSelector("li[id^='app']"));
+        List<WebElement> outerMenuItems = driver.findElements(By.cssSelector("li[id^='app"));
         String outerMenuItemLocator = "li[id^='app']:nth-child(%s)";
         String innerMenuItemLocator = "li[id^='doc']:nth-child(%s)";
         for (int i = 1; i <= outerMenuItems.size(); i++) {
