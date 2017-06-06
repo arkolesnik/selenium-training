@@ -23,7 +23,7 @@ public class CheckCountriesTest {
     public void start() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
     }
 
     @Test
