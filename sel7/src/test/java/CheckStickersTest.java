@@ -1,21 +1,17 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class CheckStickersTest {
+public class CheckStickersTest extends DriverFixture {
 
-    private WebDriver driver;
-
-    @Before
-    public void start() {
-        driver = new ChromeDriver();
+    @BeforeClass
+    public void setWait() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
@@ -29,14 +25,8 @@ public class CheckStickersTest {
             }
         }
         Assert.assertTrue(
-                count + " of " + products.size() + " products have wrong number of stickers \n",
-                count == 0);
-    }
-
-    @After
-    public void stop() {
-        driver.quit();
-        driver = null;
+                count == 0,
+                count + " of " + products.size() + " products have wrong number of stickers \n");
     }
 
 }

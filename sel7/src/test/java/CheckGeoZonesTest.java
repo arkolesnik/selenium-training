@@ -1,38 +1,16 @@
 import com.google.common.collect.Ordering;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class CheckGeoZonesTest {
-
-    private WebDriver driver;
-    private WebDriverWait wait;
-
-    @Before
-    public void start() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.MILLISECONDS);
-    }
+public class CheckGeoZonesTest extends LoginAdminFixture {
 
     @Test
     public void checkGeoZonesSorting() {
-        driver.get("http://localhost/litecart/admin");
-        driver.findElement(By.name("username")).sendKeys("admin");
-        driver.findElement(By.name("password")).sendKeys("admin");
-        driver.findElement(By.name("login")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("box-apps-menu")));
-
         By countryMenuItemLocator = By.xpath("//span[contains(text(), 'Geo Zones')]");
         driver.findElement(countryMenuItemLocator).click();
 
@@ -56,12 +34,6 @@ public class CheckGeoZonesTest {
             }
             driver.findElement(countryMenuItemLocator).click();
         }
-    }
-
-    @After
-    public void stop() {
-        driver.quit();
-        driver = null;
     }
 
 }

@@ -1,22 +1,15 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
-public class ProductDetailsTest {
+public class ProductDetailsTest extends DriverFixture {
 
-    private WebDriver driver;
-
-    @Before
-    public void start() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+    @BeforeClass
+    public void setWait() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-
 
     @Test
     public void checkProductDetails() {
@@ -94,13 +87,7 @@ public class ProductDetailsTest {
             error.append("Campaign prices are not equal; \n");
         }
 
-        Assert.assertTrue(error.toString(), error.toString().isEmpty());
-    }
-
-    @After
-    public void stop() {
-        driver.quit();
-        driver = null;
+        Assert.assertTrue(error.toString().isEmpty(), error.toString());
     }
 
 }

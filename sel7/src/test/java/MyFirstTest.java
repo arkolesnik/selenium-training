@@ -1,22 +1,8 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
-public class MyFirstTest {
-
-    private WebDriver driver;
-    private WebDriverWait wait;
-
-    @Before
-    public void start() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-    }
+public class MyFirstTest extends DriverFixture {
 
     @Test
     public void myTest() {
@@ -24,11 +10,4 @@ public class MyFirstTest {
         driver.findElement(By.cssSelector(".tpmenuid4 .tpparenttitle")).click();
         wait.until(ExpectedConditions.urlContains("edu"));
     }
-
-    @After
-    public void stop() {
-        driver.quit();
-        driver = null;
-    }
-
 }
