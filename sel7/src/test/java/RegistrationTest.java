@@ -36,14 +36,21 @@ public class RegistrationTest extends DriverFixture {
         driver.findElement(By.cssSelector("[name='confirmed_password']")).sendKeys(password);
         driver.findElement(By.cssSelector("[name='create_account']")).click();
 
-        Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed(), "You was not registered \n");
+        By logoutLink = By.linkText("Logout");
+        By loginBox = By.id("box-account-login");
 
-        driver.findElement(By.linkText("Logout")).click();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("box-account-login"))));
+        Assert.assertTrue(driver.findElement(logoutLink).isDisplayed(), "You was not registered \n");
+
+        driver.findElement(logoutLink).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginBox)));
 
         driver.findElement(By.cssSelector("input[name='email']")).sendKeys(email);
         driver.findElement(By.cssSelector("input[name='password']")).sendKeys(password);
         driver.findElement(By.cssSelector("button[name='login']")).click();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("Logout"))));
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(logoutLink)));
+        driver.findElement(logoutLink).click();
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginBox)));
     }
 }
