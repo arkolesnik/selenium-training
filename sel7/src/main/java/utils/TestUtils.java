@@ -1,3 +1,5 @@
+package utils;
+
 import com.google.common.base.CharMatcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Utils {
+public class TestUtils {
 
     public static boolean isFontRed(WebElement element) {
         String[] colors = getRgb(element.getCssValue("color"));

@@ -1,10 +1,12 @@
+package tests;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegistrationTest extends DriverFixture {
+public class RegistrationTest extends UserFixture {
 
     @Test
     public void registerAndCheck() {
@@ -17,7 +19,6 @@ public class RegistrationTest extends DriverFixture {
         String phone = "+1" + RandomStringUtils.randomNumeric(11);
         String password = RandomStringUtils.randomAlphanumeric(10);
 
-        driver.get("http://localhost/litecart/en/");
         driver.findElement(By.linkText("New customers click here")).click();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("create-account"))));
 

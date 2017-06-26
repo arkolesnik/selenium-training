@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -7,7 +9,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class CheckStickersTest extends DriverFixture {
+public class CheckStickersTest extends UserFixture {
 
     @BeforeClass
     public void setWait() {
@@ -16,7 +18,6 @@ public class CheckStickersTest extends DriverFixture {
 
     @Test
     public void checkStickers() {
-        driver.get("http://localhost/litecart/en/");
         List<WebElement> products = driver.findElements(By.cssSelector("li.product"));
         int count = 0;
         for (WebElement element : products) {

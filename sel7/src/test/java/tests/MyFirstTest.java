@@ -1,6 +1,9 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+import tests.DriverFixture;
 
 public class MyFirstTest extends DriverFixture {
 

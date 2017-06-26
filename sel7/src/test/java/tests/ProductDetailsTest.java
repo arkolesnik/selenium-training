@@ -1,10 +1,14 @@
+package tests;
+
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import utils.TestUtils;
+
 import java.util.concurrent.TimeUnit;
 
-public class ProductDetailsTest extends DriverFixture {
+public class ProductDetailsTest extends UserFixture {
 
     @BeforeClass
     public void setWait() {
@@ -13,8 +17,6 @@ public class ProductDetailsTest extends DriverFixture {
 
     @Test
     public void checkProductDetails() {
-        driver.get("http://localhost/litecart/en/");
-
         StringBuilder error = new StringBuilder();
 
         WebElement productIcon = driver.findElement(By.cssSelector("#box-campaigns li:first-child"));
@@ -26,23 +28,23 @@ public class ProductDetailsTest extends DriverFixture {
         String regularPriceMain = regularPriceElementMain.getText();
         String campaignPriceMain = campaignPriceElementMain.getText();
 
-        if (!Utils.isFontGrey(regularPriceElementMain)) {
+        if (!TestUtils.isFontGrey(regularPriceElementMain)) {
             error.append("Color of regular price on the Main page is not grey; \n");
         }
 
-        if (!Utils.isFontStrike(productIcon, "regular-price")) {
+        if (!TestUtils.isFontStrike(productIcon, "regular-price")) {
             error.append("Regular price on the Main page is not crossed out; \n");
         }
 
-        if (!Utils.isFontRed(campaignPriceElementMain)) {
+        if (!TestUtils.isFontRed(campaignPriceElementMain)) {
             error.append("Color of campaign price on the Main page is not red; \n");
         }
 
-        if (!Utils.isFontBold(campaignPriceElementMain)) {
+        if (!TestUtils.isFontBold(campaignPriceElementMain)) {
             error.append("Font for campaign price on the Main page is not bold; \n");
         }
 
-        if (Utils.getFontSize(campaignPriceElementMain) <= Utils.getFontSize(regularPriceElementMain)) {
+        if (TestUtils.getFontSize(campaignPriceElementMain) <= TestUtils.getFontSize(regularPriceElementMain)) {
             error.append("Campaign price is not bigger then regular one on the Main page; \n");
         }
 
@@ -56,23 +58,23 @@ public class ProductDetailsTest extends DriverFixture {
         String regularPriceProduct = regularPriceElementProduct.getText();
         String campaignPriceProduct = campaignPriceElementProduct.getText();
 
-        if (!Utils.isFontGrey(regularPriceElementProduct)) {
+        if (!TestUtils.isFontGrey(regularPriceElementProduct)) {
             error.append("Color of regular price on the Product page is not grey; \n");
         }
 
-        if (!Utils.isFontStrike(productInfo, "regular-price")) {
+        if (!TestUtils.isFontStrike(productInfo, "regular-price")) {
             error.append("Regular price on the Product page is not crossed out; \n");
         }
 
-        if (!Utils.isFontRed(campaignPriceElementProduct)) {
+        if (!TestUtils.isFontRed(campaignPriceElementProduct)) {
             error.append("Color of campaign price on the Product page is not red; \n");
         }
 
-        if (!Utils.isFontBold(campaignPriceElementProduct)) {
+        if (!TestUtils.isFontBold(campaignPriceElementProduct)) {
             error.append("Font for campaign price on the Product page is not bold; \n");
         }
 
-        if (Utils.getFontSize(campaignPriceElementProduct) <= Utils.getFontSize(regularPriceElementProduct)) {
+        if (TestUtils.getFontSize(campaignPriceElementProduct) <= TestUtils.getFontSize(regularPriceElementProduct)) {
             error.append("Campaign price is not bigger then regular one on the Product page; \n");
         }
 

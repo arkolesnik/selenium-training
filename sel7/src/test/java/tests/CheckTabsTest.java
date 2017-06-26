@@ -1,3 +1,5 @@
+package tests;
+
 import org.apache.commons.lang3.RandomUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
